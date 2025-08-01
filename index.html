@@ -488,6 +488,10 @@ document.querySelectorAll("#folderTree li").forEach(el => {
         const path = getFullPath(this);
         const meta = folderMeta[path.toLowerCase()];
         if (meta !== undefined) {
+            const parts = path.split(" > ");
+            const name = parts[parts.length - 1];
+            document.getElementById("infoName").textContent = name;
+            document.getElementById("infoPath").textContent = path;
             document.getElementById("infoComments").textContent = meta["Comments"] !== "" ? meta["Comments"] : "None";
             document.getElementById("infoRead").textContent = meta["Read Access"] !== "" ? meta["Read Access"] : "None";
             document.getElementById("infoWrite").textContent = meta["Write Access"] !== "" ? meta["Write Access"] : "None";
@@ -513,6 +517,8 @@ function getFullPath(el) {
 </ul></div>
 <div id="infoBox">
 <h3 style="margin-top:0;">📄 Folder Details</h3>
+<p><strong>📁 Name:</strong> <span id="infoName">N/A</span></p>
+<p><strong>🗂 Path:</strong> <span id="infoPath">N/A</span></p>
 <p><strong>📌 Comments:</strong> <span id="infoComments">N/A</span></p>
 <p><strong>👁️ Read Access:</strong> <span id="infoRead">N/A</span></p>
 <p><strong>✍️ Write Access:</strong> <span id="infoWrite">N/A</span></p>
