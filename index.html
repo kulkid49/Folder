@@ -38,6 +38,16 @@
         margin-right: 6px;
         transition: transform 0.3s;
     }
+    .caret.folder-closed::after {
+        content: "\1F4C1"; /* closed folder emoji */
+        margin-right: 6px;
+        transition: transform 0.3s;
+    }
+    .caret.folder-open::after {
+        content: "\1F4C2"; /* open folder emoji */
+        margin-right: 6px;
+        transition: transform 0.3s;
+    }
     .caret-down::before {
         transform: rotate(90deg);
     }
@@ -129,9 +139,9 @@ li:hover .folder-actions {
 <button class="action-button clear-btn" onclick="clearSearch()">Clear Search</button>
 <div id="searchResult"></div>
 <ul id="folderTree">
-<li class="level-1"><span class="caret">📁Project Governance</span>
+<li class="level-1"><span class="caret">Project Governance</span>
 <ul class="nested">
-<li class="level-2"><span class="caret">📁01 Project Plan</span>
+<li class="level-2"><span class="caret">01 Project Plan</span>
 <ul class="nested">
 <li class="level-3">📁Phase 1 Project Plan</li>
 <li class="level-3">📁Phase 1 Ref Docs</li>
@@ -139,28 +149,28 @@ li:hover .folder-actions {
 <li class="level-3">📁Phase 2 Ref Docs</li>
 </ul>
 </li>
-<li class="level-2"><span class="caret">📁02 PMO Corner</span>
+<li class="level-2"><span class="caret">02 PMO Corner</span>
 <ul class="nested">
 <li class="level-3">📁MOM</li>
 <li class="level-3">📁Risk Register</li>
 </ul>
 </li>
-<li class="level-2"><span class="caret">📁03 Steering Committee</span>
+<li class="level-2"><span class="caret">03 Steering Committee</span>
 <ul class="nested">
 <li class="level-3">📁SteerCo Decks</li>
 </ul>
 </li>
-<li class="level-2"><span class="caret">📁04 Travel Planning</span>
+<li class="level-2"><span class="caret">04 Travel Planning</span>
 <ul class="nested">
 <li class="level-3">📁Travel Planner Phase 1</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="level-1"><span class="caret">📁Global Template</span>
+<li class="level-1"><span class="caret">Global Template</span>
 <ul class="nested">
 <li class="level-2">📁Inputs from IRC</li>
-<li class="level-2"><span class="caret">📁Deliverables for Sign Off</span>
+<li class="level-2"><span class="caret">Deliverables for Sign Off</span>
 <ul class="nested">
 <li class="level-3">📁01 BPML</li>
 <li class="level-3">📁02 Org. Structure</li>
@@ -171,7 +181,7 @@ li:hover .folder-actions {
 <li class="level-3">📁07 Others</li>
 </ul>
 </li>
-<li class="level-2"><span class="caret">📁Signed Off Documents</span>
+<li class="level-2"><span class="caret">Signed Off Documents</span>
 <ul class="nested">
 <li class="level-3">📁01 BPML</li>
 <li class="level-3">📁02 Org. Structure</li>
@@ -182,7 +192,7 @@ li:hover .folder-actions {
 <li class="level-3">📁07 Others</li>
 </ul>
 </li>
-<li class="level-2"><span class="caret">📁Working Documents GT</span>
+<li class="level-2"><span class="caret">Working Documents GT</span>
 <ul class="nested">
 <li class="level-3">📁01 BPML</li>
 <li class="level-3">📁02 Org. Structure</li>
@@ -195,11 +205,11 @@ li:hover .folder-actions {
 </li>
 </ul>
 </li>
-<li class="level-1"><span class="caret">📁Roll Out Phase 1</span>
+<li class="level-1"><span class="caret">Roll Out Phase 1</span>
 <ul class="nested">
-<li class="level-2"><span class="caret">📁Local Fit GAP</span>
+<li class="level-2"><span class="caret">Local Fit GAP</span>
 <ul class="nested">
-<li class="level-3"><span class="caret">📁Working Documents</span>
+<li class="level-3"><span class="caret">Working Documents</span>
 <ul class="nested">
 <li class="level-4">📁Local BPFDs</li>
 <li class="level-4">📁Local Fit-Gap MOMs</li>
@@ -214,13 +224,13 @@ li:hover .folder-actions {
 <li class="level-4">📁Number Ranges</li>
 </ul>
 </li>
-<li class="level-3"><span class="caret">📁Deliverables for Sign Off</span>
+<li class="level-3"><span class="caret">Deliverables for Sign Off</span>
 <ul class="nested">
 <li class="level-4">📁Local BPFDs</li>
 <li class="level-4">📁LOCAL KDS</li>
 <li class="level-4">📁Local RTM</li>
 <li class="level-4">📁Number Ranges</li>
-<li class="level-4"><span class="caret">📁Revisions</span>
+<li class="level-4"><span class="caret">Revisions</span>
 <ul class="nested">
 <li class="level-5">📁Local BPFDs</li>
 <li class="level-5">📁LOCAL KDS</li>
@@ -230,10 +240,10 @@ li:hover .folder-actions {
 </li>
 </ul>
 </li>
-<li class="level-3"><span class="caret">📁Signed Off Documents</span>
+<li class="level-3"><span class="caret">Signed Off Documents</span>
 <ul class="nested">
 <li class="level-4">📁Tracker</li>
-<li class="level-4"><span class="caret">📁Sign off Reference</span>
+<li class="level-4"><span class="caret">Sign off Reference</span>
 <ul class="nested">
 <li class="level-5">📁GE Sign Off Emails</li>
 <li class="level-5">📁ID Sign Off Emails</li>
@@ -242,27 +252,27 @@ li:hover .folder-actions {
 </li>
 </ul>
 </li>
-<li class="level-3"><span class="caret">📁Realize &amp; Build</span>
+<li class="level-3"><span class="caret">Realize &amp; Build</span>
 <ul class="nested">
 <li class="level-4">📁Configuration checklist</li>
 <li class="level-4">📁WRICEF Developments</li>
 </ul>
 </li>
-<li class="level-3"><span class="caret">📁Realize &amp; Test</span>
+<li class="level-3"><span class="caret">Realize &amp; Test</span>
 <ul class="nested">
 <li class="level-4">📁UT</li>
 <li class="level-4">📁SIT</li>
 <li class="level-4">📁UAT</li>
 </ul>
 </li>
-<li class="level-3"><span class="caret">📁Governance</span>
+<li class="level-3"><span class="caret">Governance</span>
 <ul class="nested">
 <li class="level-4">📁TR Movement Tracker</li>
 <li class="level-4">📁SAP Server Readiness</li>
 </ul>
 </li>
 <li class="level-3">📁Master Data</li>
-<li class="level-3"><span class="caret">📁Cut Over</span>
+<li class="level-3"><span class="caret">Cut Over</span>
 <ul class="nested">
 <li class="level-4">📁Cutover Plan</li>
 <li class="level-4">📁Cutover Strategy</li>
