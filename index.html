@@ -128,29 +128,27 @@ li:hover .folder-actions {
     color: #fff;
     font-weight: bold;
 }
-.main-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-}
+    .main-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
 
     .tree-section {
-        flex: 1;
+        flex: 0 0 70%;
         max-height: 80vh; /* allow scrolling for long folder lists */
         overflow-y: auto;
     }
 
     #infoBox {
-        width: 350px;
+        flex: 0 0 30%;
+        width: 30%;
         background: #fff;
         border: 1px solid #ccc;
         border-radius: 8px;
         box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
         padding: 15px;
         display: none;
-        position: fixed; /* keep details visible */
-        top: 120px;
-        right: 30px;
     }
 .action-button:hover {
     opacity: 0.9;
