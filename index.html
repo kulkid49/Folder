@@ -122,10 +122,30 @@ li:hover .folder-actions {
 <ul id="folderTree">
 <li class="level-1"><span class="caret">📁Project Governance</span>
 <ul class="nested">
-<li class="level-2">📁01 Project Plan</li>
-<li class="level-2">📁02 PMO Corner</li>
-<li class="level-2">📁03 Steering Committee</li>
-<li class="level-2">📁04 Travel Planning</li>
+<li class="level-2"><span class="caret">📁01 Project Plan</span>
+<ul class="nested">
+<li class="level-3">📁Phase 1 Project Plan</li>
+<li class="level-3">📁Phase 1 Ref Docs</li>
+<li class="level-3">📁Phase 2 Project Plan</li>
+<li class="level-3">📁Phase 2 Ref Docs</li>
+</ul>
+</li>
+<li class="level-2"><span class="caret">📁02 PMO Corner</span>
+<ul class="nested">
+<li class="level-3">📁MOM</li>
+<li class="level-3">📁Risk Register</li>
+</ul>
+</li>
+<li class="level-2"><span class="caret">📁03 Steering Committee</span>
+<ul class="nested">
+<li class="level-3">📁SteerCo Decks</li>
+</ul>
+</li>
+<li class="level-2"><span class="caret">📁04 Travel Planning</span>
+<ul class="nested">
+<li class="level-3">📁Travel Planner Phase 1</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="level-1"><span class="caret">📁Global Template</span>
@@ -140,17 +160,6 @@ li:hover .folder-actions {
 <li class="level-3">📁05 BPFD</li>
 <li class="level-3">📁06 WRICEF</li>
 <li class="level-3">📁07 Others</li>
-<li class="level-3"><span class="caret">📁Revisions</span>
-<ul class="nested">
-<li class="level-4">📁01 BPML</li>
-<li class="level-4">📁02 Org. Structure</li>
-<li class="level-4">📁03 RTM</li>
-<li class="level-4">📁04 KDS</li>
-<li class="level-4">📁05 BPFD</li>
-<li class="level-4">📁06 WRICEF</li>
-<li class="level-4">📁07 Others</li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="level-2"><span class="caret">📁Signed Off Documents</span>
@@ -164,7 +173,17 @@ li:hover .folder-actions {
 <li class="level-3">📁07 Others</li>
 </ul>
 </li>
-<li class="level-2">📁Working Documents GT</li>
+<li class="level-2"><span class="caret">📁Working Documents GT</span>
+<ul class="nested">
+<li class="level-3">📁01 BPML</li>
+<li class="level-3">📁02 Org. Structure</li>
+<li class="level-3">📁03 RTM</li>
+<li class="level-3">📁04 KDS</li>
+<li class="level-3">📁05 BPFD</li>
+<li class="level-3">📁06 WRICEF</li>
+<li class="level-3">📁07 Others</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="level-1"><span class="caret">📁Roll Out Phase 1</span>
@@ -342,7 +361,77 @@ li:hover .folder-actions {
         searchFolder();
     }
 </script><script>
-const folderMeta = {'project governance': {'Comments': 'To be moved to main folder under EY DOC', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO'}, 'project governance > 01 project plan': {'Comments': 'None', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO'}, 'project governance > 02 pmo corner': {'Comments': 'None', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO'}, 'project governance > 03 steering committee': {'Comments': 'None', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO'}, 'project governance > 04 travel planning': {'Comments': 'None', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO'}, 'global template > inputs from irc': {'Comments': 'Reports and Other Documents Received from IRC\nCountry-wise — move reports to respective folders under AS-IS', 'Read Access': 'IRC + EY', 'Write Access': 'IRC'}, 'global template > deliverables for sign off > 01 bpml': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'global template > deliverables for sign off > 02 org. structure': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'global template > deliverables for sign off > 03 rtm': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'global template > deliverables for sign off > 04 kds': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'global template > deliverables for sign off > 05 bpfd': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'global template > deliverables for sign off > 06 wricef': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'global template > deliverables for sign off > 07 others': {'Comments': 'Example: Nigeria Open Points', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'global template > deliverables for sign off > 08 revisions > 01 bpml': {'Comments': 'This will have the latest + previous versions', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > deliverables for sign off > 08 revisions > 02 org. structure': {'Comments': 'This will have the latest + previous versions', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > deliverables for sign off > 08 revisions > 03 rtm': {'Comments': 'This will have the latest + previous versions', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > deliverables for sign off > 08 revisions > 04 kds': {'Comments': 'This will have the latest + previous versions', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > deliverables for sign off > 08 revisions > 05 bpfd': {'Comments': 'This will have the latest + previous versions', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > deliverables for sign off > 08 revisions > 06 wricef': {'Comments': 'This will have the latest + previous versions', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > deliverables for sign off > 08 revisions > 07 others': {'Comments': 'This will have the latest + previous versions', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > signed off documents > 01 bpml': {'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > signed off documents > 02 org. structure': {'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > signed off documents > 03 rtm': {'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > signed off documents > 04 kds': {'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > signed off documents > 05 bpfd': {'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > signed off documents > 06 wricef': {'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > signed off documents > 07 others': {'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'None'}, 'global template > working documents gt': {'Comments': 'Folders to be created as needed', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > local bpfds': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > local fit-gap moms': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > cost center list_final_phase1': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > ge sign off emails': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > id sign off emails': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > uz sign off emails': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > local formats': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > local kds': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > local rtm': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > local_fit-gap_ws_action item tracker': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > working documents > number ranges': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY'}, 'roll out phase 1 > local fit gap > deliverables for sign off > local bpfds': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'roll out phase 1 > local fit gap > deliverables for sign off > local kds': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'roll out phase 1 > local fit gap > deliverables for sign off > local rtm': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'roll out phase 1 > local fit gap > deliverables for sign off > number ranges': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'EY'}, 'roll out phase 1 > local fit gap > deliverables for sign off > revisions > local bpfds': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > local fit gap > deliverables for sign off > revisions > local kds': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > local fit gap > deliverables for sign off > revisions > local rtm': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > local fit gap > deliverables for sign off > revisions > number ranges': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > local fit gap > signed off documents > tracker': {'Comments': 'None', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > local fit gap > signed off documents > sign off reference > ge sign off emails': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > local fit gap > signed off documents > sign off reference > id sign off emails': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > local fit gap > signed off documents > sign off reference > uz sign off emails': {'Comments': 'None', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO'}, 'roll out phase 1 > realize & build > configuration checklist': {'Comments': 'None', 'Read Access': 'IRC PMO + EY', 'Write Access': 'EY'}, 'roll out phase 1 > realize & build > wricef developments': {'Comments': 'None', 'Read Access': 'IRC PMO + EY', 'Write Access': 'EY'}, 'roll out phase 1 > realize & test > ut': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > realize & test > sit': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > realize & test > uat': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > governance > tr movement tracker': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > governance > sap server readiness': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > master data': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > cut over > cutover plan': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > cut over > cutover strategy': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > cut over > cutover templates': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > pre-go-live': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > go live': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}, 'roll out phase 1 > pgls': {'Comments': 'None', 'Read Access': 'TBD', 'Write Access': 'TBD'}};
+const folderMeta = {
+  'project governance': { 'Comments': 'To be moved to main folder under EY DOC', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 01 project plan > phase 1 project plan': { 'Comments': 'Project Plan in Excel', 'Read Access': 'IRC PMO + EY PMO+BPLs+MPLs+IT Heads', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 01 project plan > phase 1 ref docs': { 'Comments': 'Project Plan in MPP', 'Read Access': 'IRC PMO + EY PMO+BPLs+MPLs+IT Heads', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 01 project plan > phase 2 project plan': { 'Comments': 'Project Plan in Excel', 'Read Access': 'IRC PMO + EY PMO+BPLs+MPLs+IT Heads', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 01 project plan > phase 2 ref docs': { 'Comments': 'Project Plan in MPP', 'Read Access': 'IRC PMO + EY PMO+BPLs+MPLs+IT Heads', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 02 pmo corner > mom': { 'Comments': 'PMO Meeting MoMs', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 02 pmo corner > risk register': { 'Comments': '', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 03 steering committee > steerco decks': { 'Comments': 'Date-wise SteerCo. Decks', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO' },
+  'project governance > 04 travel planning > travel planner phase 1': { 'Comments': '', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO' },
+  'global template > inputs from irc': { 'Comments': 'Reports and Other Documents Received from IRC.\nCountry-wise — move reports to respective folders under AS-IS', 'Read Access': 'IRC + EY', 'Write Access': 'IRC' },
+  'global template > deliverables for sign off > 01 bpml': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'Core EY PMO' },
+  'global template > deliverables for sign off > 02 org. structure': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'Core EY PMO' },
+  'global template > deliverables for sign off > 03 rtm': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'Core EY PMO' },
+  'global template > deliverables for sign off > 04 kds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'Core EY PMO' },
+  'global template > deliverables for sign off > 05 bpfd': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'Core EY PMO' },
+  'global template > deliverables for sign off > 06 wricef': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'Core EY PMO' },
+  'global template > deliverables for sign off > 07 others': { 'Comments': 'Example: Nigeria Open Points', 'Read Access': 'IRC + EY', 'Write Access': 'Core EY PMO' },
+  'global template > signed off documents > 01 bpml': { 'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'EY Super PMO' },
+  'global template > signed off documents > 02 org. structure': { 'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'EY Super PMO' },
+  'global template > signed off documents > 03 rtm': { 'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'EY Super PMO' },
+  'global template > signed off documents > 04 kds': { 'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'EY Super PMO' },
+  'global template > signed off documents > 05 bpfd': { 'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'EY Super PMO' },
+  'global template > signed off documents > 06 wricef': { 'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'EY Super PMO' },
+  'global template > signed off documents > 07 others': { 'Comments': 'Only Final Signed off Docs', 'Read Access': 'IRC + EY', 'Write Access': 'EY Super PMO' },
+  'global template > working documents gt': { 'Comments': 'Folders to be created as needed', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'global template > working documents gt > 01 bpml': { 'Comments': 'only 1 file in the working document', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'global template > working documents gt > 02 org. structure': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'global template > working documents gt > 03 rtm': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'global template > working documents gt > 04 kds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'global template > working documents gt > 05 bpfd': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'global template > working documents gt > 06 wricef': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'global template > working documents gt > 07 others': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > local bpfds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > local fit-gap moms': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > cost center list_final_phase1': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > ge sign off emails': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > id sign off emails': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > uz sign off emails': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > local formats': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > local kds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > local rtm': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > local_fit-gap_ws_action item tracker': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > working documents > number ranges': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC + EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > local bpfds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > local kds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > local rtm': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > number ranges': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > revisions > local bpfds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > revisions > local kds': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > revisions > local rtm': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > deliverables for sign off > revisions > number ranges': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > local fit gap > signed off documents > tracker': { 'Comments': '', 'Read Access': 'IRC PMO + EY PMO', 'Write Access': 'IRC PMO + EY PMO' },
+  'roll out phase 1 > local fit gap > signed off documents > sign off reference > ge sign off emails': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO' },
+  'roll out phase 1 > local fit gap > signed off documents > sign off reference > id sign off emails': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO' },
+  'roll out phase 1 > local fit gap > signed off documents > sign off reference > uz sign off emails': { 'Comments': '', 'Read Access': 'IRC + EY', 'Write Access': 'IRC PMO + EY PMO' },
+  'roll out phase 1 > realize & build > configuration checklist': { 'Comments': '', 'Read Access': 'IRC PMO + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > realize & build > wricef developments': { 'Comments': '', 'Read Access': 'IRC PMO + EY', 'Write Access': 'EY' },
+  'roll out phase 1 > realize & test > ut': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > realize & test > sit': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > realize & test > uat': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > governance > tr movement tracker': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > governance > sap server readiness': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > master data': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > cut over > cutover plan': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > cut over > cutover strategy': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > cut over > cutover templates': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > pre-go-live': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > go live': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' },
+  'roll out phase 1 > pgls': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' }
+};
 
 document.querySelectorAll("#folderTree li").forEach(el => {
     el.addEventListener("click", function(e) {
