@@ -31,22 +31,26 @@
     .caret {
         cursor: pointer;
         user-select: none;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
     }
     .caret::before {
         content: "\25B6";
         margin-right: 6px;
         transition: transform 0.3s;
+        order: -2;
     }
     .caret.folder-closed::after {
         content: "\1F4C1"; /* closed folder emoji */
         margin-right: 6px;
         transition: transform 0.3s;
+        order: -1;
     }
     .caret.folder-open::after {
         content: "\1F4C2"; /* open folder emoji */
         margin-right: 6px;
         transition: transform 0.3s;
+        order: -1;
     }
     .caret-down::before {
         transform: rotate(90deg);
