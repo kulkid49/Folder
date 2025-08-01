@@ -111,13 +111,30 @@ li:hover .folder-actions {
 .meta-section label {
     font-weight: bold;
 }
+
+/* consistent buttons with different colors */
+.action-button {
+    padding: 6px 12px;
+    margin-right: 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+}
+.action-button:hover {
+    opacity: 0.9;
+}
+.expand-btn { background-color: #3498db; }
+.collapse-btn { background-color: #e67e22; }
+.clear-btn { background-color: #e74c3c; }
 </style></head>
 <body>
 <h2>📁 EY DOC Folder Tree</h2>
-<button onclick="expandAll()">Expand All</button>
-<button onclick="collapseAll()">Collapse All</button>
+<button class="action-button expand-btn" onclick="expandAll()">Expand All</button>
+<button class="action-button collapse-btn" onclick="collapseAll()">Collapse All</button>
 <input id="searchBox" oninput="searchFolder()" placeholder="Search folder..." type="text"/>
-<button onclick="clearSearch()">Clear Search</button>
+<button class="action-button clear-btn" onclick="clearSearch()">Clear Search</button>
 <div id="searchResult"></div>
 <ul id="folderTree">
 <li class="level-1"><span class="caret">📁Project Governance</span>
