@@ -480,7 +480,7 @@ const folderMeta = {
   'roll out phase 1 > local fit gap > pgls': { 'Comments': '', 'Read Access': 'To be Discussed/Decided', 'Write Access': 'To be Discussed/Decided' }
 };
 
-document.querySelectorAll("#folderTree li").forEach(el => {
+function attachLiEvent(el) {
     el.addEventListener("click", function(e) {
         e.stopPropagation();
         const path = getFullPath(this);
@@ -497,7 +497,12 @@ document.querySelectorAll("#folderTree li").forEach(el => {
         } else {
             document.getElementById("infoBox").style.display = "none";
         }
+        showFolderActions(this);
     });
+}
+
+document.querySelectorAll("#folderTree li").forEach(el => {
+    attachLiEvent(el);
 });
 
 function getFullPath(el) {
@@ -511,17 +516,156 @@ function getFullPath(el) {
     }
     return path.join(" > ");
 }
+
+function checkPasscode() {
+    const pass = prompt("Enter passcode:");
+    return pass === "samya";
+}
+
+let currentEditPath = null;
+
+function showFolderActions(li) {
+    document.querySelectorAll('.folder-actions').forEach(a => a.remove());
+    const span = document.createElement('span');
+    span.className = 'folder-actions';
+    span.innerHTML =
+        '<button onclick="renameFolder(event)">✏️</button>'+
+        '<button onclick="addSubfolder(event)">➕</button>'+
+        '<button onclick="deleteFolder(event)">🗑️</button>'+
+        '<button onclick="editFolderDetails(event)">📝</button>';
+    li.appendChild(span);
+}
+
+function renameFolder(e) {
+    e.stopPropagation();
+    if(!checkPasscode()) return;
+    const li = e.target.closest('li');
+    const oldPath = getFullPath(li);
+    const caret = li.querySelector('.caret');
+    const oldName = caret ? caret.textContent.trim() : li.textContent.replace(/^📁/, '').trim();
+    const newName = prompt('Rename folder:', oldName);
+    if(!newName) return;
+    if(caret) caret.textContent = newName; else li.firstChild.textContent = '📁'+newName;
+    const meta = folderMeta[oldPath.toLowerCase()];
+    const parts = oldPath.split(' > ');
+    parts[parts.length-1] = newName;
+    const newPath = parts.join(' > ');
+    if(meta) {
+        delete folderMeta[oldPath.toLowerCase()];
+        folderMeta[newPath.toLowerCase()] = meta;
+    }
+    if(document.getElementById('infoPath').textContent === oldPath) {
+        document.getElementById('infoName').textContent = newName;
+        document.getElementById('infoPath').textContent = newPath;
+    }
+}
+
+function addSubfolder(e) {
+    e.stopPropagation();
+    if(!checkPasscode()) return;
+    const li = e.target.closest('li');
+    const name = prompt('New subfolder name:');
+    if(!name) return;
+    let ul = li.querySelector('.nested');
+    if(!ul) {
+        ul = document.createElement('ul');
+        ul.className = 'nested active';
+        li.appendChild(ul);
+        if(!li.querySelector('.caret')) {
+            const text = li.textContent.replace(/^📁/, '').trim();
+            li.textContent = '';
+            const span = document.createElement('span');
+            span.className='caret caret-down folder-open';
+            span.textContent = text;
+            li.appendChild(span);
+            li.appendChild(ul);
+        }
+    } else {
+        ul.classList.add('active');
+        const caret = li.querySelector('.caret');
+        if(caret) { caret.classList.add('caret-down','folder-open'); caret.classList.remove('folder-closed'); }
+    }
+    const newLi = document.createElement('li');
+    newLi.textContent = '📁'+name;
+    ul.appendChild(newLi);
+    attachLiEvent(newLi);
+    const parentPath = getFullPath(li);
+    const newPath = parentPath + ' > ' + name;
+    folderMeta[newPath.toLowerCase()] = {'Comments':'','Read Access':'','Write Access':''};
+}
+
+function deleteFolder(e) {
+    e.stopPropagation();
+    if(!checkPasscode()) return;
+    const li = e.target.closest('li');
+    if(!confirm('Delete this folder and its subfolders?')) return;
+    const path = getFullPath(li).toLowerCase();
+    Object.keys(folderMeta).forEach(k => { if(k.startsWith(path)) delete folderMeta[k]; });
+    li.remove();
+    document.getElementById('infoBox').style.display = 'none';
+}
+
+function editFolderDetails(e) {
+    e.stopPropagation();
+    if(!checkPasscode()) return;
+    const li = e.target.closest('li');
+    const path = getFullPath(li);
+    currentEditPath = path;
+    const meta = folderMeta[path.toLowerCase()] || {'Comments':'','Read Access':'','Write Access':''};
+    document.getElementById('editComments').value = meta['Comments'];
+    document.getElementById('editRead').value = meta['Read Access'];
+    document.getElementById('editWrite').value = meta['Write Access'];
+    document.getElementById('infoDisplay').style.display = 'none';
+    document.getElementById('editForm').style.display = 'block';
+}
+
+function saveFolderDetails() {
+    if(!currentEditPath) return;
+    const comments = document.getElementById('editComments').value;
+    const read = document.getElementById('editRead').value;
+    const write = document.getElementById('editWrite').value;
+    folderMeta[currentEditPath.toLowerCase()] = {'Comments':comments,'Read Access':read,'Write Access':write};
+    document.getElementById('infoComments').textContent = comments || 'None';
+    document.getElementById('infoRead').textContent = read || 'None';
+    document.getElementById('infoWrite').textContent = write || 'None';
+    document.getElementById('infoDisplay').style.display = 'block';
+    document.getElementById('editForm').style.display = 'none';
+}
+
+function downloadHTML() {
+    const html = document.documentElement.outerHTML;
+    const blob = new Blob([html], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'updated.html';
+    a.click();
+    URL.revokeObjectURL(url);
+}
 </script>
 </ul></div>
 <div id="infoBox">
 <h3 style="margin-top:0;">📄 Folder Details</h3>
+<div id="infoDisplay">
 <p><strong>📁 Name:</strong> <span id="infoName">N/A</span></p>
 <p><strong>🗂 Path:</strong> <span id="infoPath">N/A</span></p>
 <p><strong>📌 Comments:</strong> <span id="infoComments">N/A</span></p>
 <p><strong>👁️ Read Access:</strong> <span id="infoRead">N/A</span></p>
 <p><strong>✍️ Write Access:</strong> <span id="infoWrite">N/A</span></p>
 </div>
+<form id="editForm" style="display:none;">
+  <label>Comments</label>
+  <textarea id="editComments"></textarea>
+  <label>Read Access</label>
+  <input id="editRead" type="text"/>
+  <label>Write Access</label>
+  <input id="editWrite" type="text"/>
+  <button type="button" onclick="saveFolderDetails()">Save</button>
+</form>
 </div>
+</div>
+
+<button id="downloadBtn" onclick="downloadHTML()" style="position:fixed; bottom:20px; right:20px;">Download the updated HTML</button>
 
 </body>
 </html>
