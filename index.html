@@ -150,6 +150,49 @@ li:hover .folder-actions {
         padding: 15px;
         display: none;
     }
+
+    /* styling for edit details form */
+    #editForm label {
+        display: block;
+        margin-top: 8px;
+        font-weight: bold;
+    }
+
+    #editForm input,
+    #editForm textarea {
+        width: 100%;
+        padding: 6px;
+        margin-top: 4px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+    }
+
+    #editForm button {
+        margin-top: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* download button styling */
+    #downloadBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #27ae60;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #downloadBtn:hover {
+        opacity: 0.9;
+    }
 .action-button:hover {
     opacity: 0.9;
 }
@@ -612,6 +655,8 @@ function editFolderDetails(e) {
     const path = getFullPath(li);
     currentEditPath = path;
     const meta = folderMeta[path.toLowerCase()] || {'Comments':'','Read Access':'','Write Access':''};
+    document.getElementById('editName').value = path.split(' > ').pop();
+    document.getElementById('editPath').value = path;
     document.getElementById('editComments').value = meta['Comments'];
     document.getElementById('editRead').value = meta['Read Access'];
     document.getElementById('editWrite').value = meta['Write Access'];
@@ -654,6 +699,10 @@ function downloadHTML() {
 <p><strong>✍️ Write Access:</strong> <span id="infoWrite">N/A</span></p>
 </div>
 <form id="editForm" style="display:none;">
+  <label>Name</label>
+  <input id="editName" type="text" readonly />
+  <label>Path</label>
+  <input id="editPath" type="text" readonly />
   <label>Comments</label>
   <textarea id="editComments"></textarea>
   <label>Read Access</label>
@@ -665,7 +714,7 @@ function downloadHTML() {
 </div>
 </div>
 
-<button id="downloadBtn" onclick="downloadHTML()" style="position:fixed; bottom:20px; right:20px;">Download the updated HTML</button>
+<button id="downloadBtn" onclick="downloadHTML()">Download the updated HTML</button>
 
 </body>
 </html>
