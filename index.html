@@ -551,13 +551,25 @@ document.querySelectorAll("#folderTree li").forEach(el => {
 function getFullPath(el) {
     let path = [];
     while (el && el.tagName === "LI") {
-        let textNode = el.querySelector(".caret") || el;
-        let text = textNode.textContent.trim();
+        let text = '';
+        const caret = el.querySelector('.caret');
+        if (caret) {
+            text = caret.textContent.trim();
+        } else {
+            // For leaf nodes without a caret, extract only the text content
+            // so that action buttons (edit/delete/etc.) are ignored
+            el.childNodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    text += node.textContent;
+                }
+            });
+            text = text.trim();
+        }
         text = text.replace(/^📁/, '').trim();
         path.unshift(text);
-        el = el.parentElement.closest("li");
+        el = el.parentElement.closest('li');
     }
-    return path.join(" > ");
+    return path.join(' > ');
 }
 
 function checkPasscode() {
