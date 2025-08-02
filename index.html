@@ -597,10 +597,21 @@ function renameFolder(e) {
     const li = e.target.closest('li');
     const oldPath = getFullPath(li);
     const caret = li.querySelector('.caret');
-    const oldName = caret ? caret.textContent.trim() : li.textContent.replace(/^📁/, '').trim();
+    let textNode = null;
+    let oldName = '';
+    if(caret) {
+        oldName = caret.textContent.trim();
+    } else {
+        textNode = Array.from(li.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+        if(textNode) oldName = textNode.textContent.replace(/^📁/, '').trim();
+    }
     const newName = prompt('Rename folder:', oldName);
     if(!newName) return;
-    if(caret) caret.textContent = newName; else li.firstChild.textContent = '📁'+newName;
+    if(caret) {
+        caret.textContent = newName;
+    } else if(textNode) {
+        textNode.textContent = '📁' + newName;
+    }
     const meta = folderMeta[oldPath.toLowerCase()];
     const parts = oldPath.split(' > ');
     parts[parts.length-1] = newName;
@@ -642,6 +653,10 @@ function addSubfolder(e) {
     }
     const newLi = document.createElement('li');
     newLi.textContent = '📁'+name;
+    const parentLevelMatch = Array.from(li.classList).find(c => c.startsWith('level-'));
+    let parentLevel = parentLevelMatch ? parseInt(parentLevelMatch.split('-')[1]) : 1;
+    const newLevel = Math.min(parentLevel + 1, 6);
+    newLi.classList.add('level-' + newLevel);
     ul.appendChild(newLi);
     attachLiEvent(newLi);
     const parentPath = getFullPath(li);
