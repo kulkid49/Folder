@@ -99,6 +99,35 @@
       .level-8 {
         color: #D4142A; /* Crimson Red */
       }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      #levelLegend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .color-box {
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+        border: 1px solid #ccc;
+        background-color: currentColor;
+      }
     </style>
     <style>
       .folder-actions {
@@ -229,7 +258,19 @@
     </style>
   </head>
   <body>
-    <h2>📁 EY DOC Folder Tree</h2>
+    <div class="header">
+      <h2>📁 EY DOC Folder Tree</h2>
+      <div id="levelLegend">
+        <span class="legend-item"><span class="color-box level-1"></span>Level 1</span>
+        <span class="legend-item"><span class="color-box level-2"></span>Level 2</span>
+        <span class="legend-item"><span class="color-box level-3"></span>Level 3</span>
+        <span class="legend-item"><span class="color-box level-4"></span>Level 4</span>
+        <span class="legend-item"><span class="color-box level-5"></span>Level 5</span>
+        <span class="legend-item"><span class="color-box level-6"></span>Level 6</span>
+        <span class="legend-item"><span class="color-box level-7"></span>Level 7</span>
+        <span class="legend-item"><span class="color-box level-8"></span>Level 8</span>
+      </div>
+    </div>
     <button class="action-button expand-btn" onclick="expandAll()">
       Expand All
     </button>
