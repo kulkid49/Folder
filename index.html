@@ -182,23 +182,26 @@
         display: flex;
         align-items: flex-start;
         gap: 20px;
+        flex-wrap: wrap;
       }
 
       .tree-section {
-        flex: 0 0 70%;
+        flex: 0 1 70%;
         max-height: 80vh; /* allow scrolling for long folder lists */
         overflow-y: auto;
       }
 
       #infoBox {
-        flex: 0 0 30%;
-        width: 30%;
+        flex: 0 1 30%;
+        max-width: 30%;
+        box-sizing: border-box;
         background: #fff;
         border: 1px solid #ccc;
         border-radius: 8px;
         box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
         padding: 15px;
         display: none;
+        overflow-wrap: break-word;
       }
 
       /* styling for edit details form */
