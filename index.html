@@ -2903,7 +2903,12 @@
               }
 
               function downloadHTML() {
-                const html = document.documentElement.outerHTML;
+                const meta = JSON.stringify(folderMeta, null, 2);
+                let html = document.documentElement.outerHTML;
+                html = html.replace(
+                  /const folderMeta = {[^]*?};/,
+                  "const folderMeta = " + meta + ";"
+                );
                 const blob = new Blob([html], { type: "text/html" });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement("a");
