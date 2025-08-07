@@ -644,11 +644,23 @@ function addSubfolder(e) {
         ul.className = 'nested active';
         li.appendChild(ul);
         if(!li.querySelector('.caret')) {
-            const text = li.textContent.replace(/^📁/, '').trim();
-            li.textContent = '';
+            let text = '';
+            const textNode = Array.from(li.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+            if(textNode) text = textNode.textContent.replace(/^📁/, '').trim();
             const span = document.createElement('span');
             span.className='caret caret-down folder-open';
             span.textContent = text;
+            span.addEventListener('click', function(ev){
+                ev.stopPropagation();
+                const nestedList = this.parentElement.querySelector('.nested');
+                if(nestedList){
+                    nestedList.classList.toggle('active');
+                    this.classList.toggle('caret-down');
+                    this.classList.toggle('folder-open');
+                    this.classList.toggle('folder-closed');
+                }
+            });
+            li.textContent = '';
             li.appendChild(span);
             li.appendChild(ul);
         }
@@ -665,6 +677,7 @@ function addSubfolder(e) {
     newLi.classList.add('level-' + newLevel);
     ul.appendChild(newLi);
     attachLiEvent(newLi);
+    showFolderActions(li);
     const parentPath = getFullPath(li);
     const newPath = parentPath + ' > ' + name;
     folderMeta[newPath.toLowerCase()] = {'Comments':'','Read Access':'','Write Access':''};
