@@ -243,6 +243,20 @@
       #downloadBtn:hover {
         opacity: 0.9;
       }
+      #downloadExcelBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 200px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #downloadExcelBtn:hover {
+        opacity: 0.9;
+      }
       .action-button:hover {
         opacity: 0.9;
       }
@@ -256,6 +270,7 @@
         background-color: #e74c3c;
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   </head>
   <body>
     <div class="header">
@@ -4050,7 +4065,38 @@
                 document.getElementById("infoFilename").textContent =
                   filename || "None";
                 document.getElementById("infoDisplay").style.display = "block";
-                document.getElementById("editForm").style.display = "none";
+              document.getElementById("editForm").style.display = "none";
+              }
+
+              function downloadExcel() {
+                const headers = [
+                  "Folder Name",
+                  "Folder Path",
+                  "Comments",
+                  "Read Access",
+                  "Write Access",
+                  "Filename Sample",
+                ];
+                const rows = [headers];
+                Object.keys(folderMeta).forEach((key) => {
+                  const m = folderMeta[key];
+                  rows.push([
+                    m.Name || "",
+                    m.Path || "",
+                    m["Comments"] || "",
+                    m["Read Access"] || "",
+                    m["Write Access"] || "",
+                    m["Filename Sample"] || "",
+                  ]);
+                });
+                const worksheet = XLSX.utils.aoa_to_sheet(rows);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(
+                  workbook,
+                  worksheet,
+                  "Folder Structure"
+                );
+                XLSX.writeFile(workbook, "EY DOC folder structure.xlsx");
               }
 
               function downloadHTML() {
@@ -4108,10 +4154,16 @@
           <button onclick="saveFolderDetails()" type="button">Save</button>
         </form>
       </div>
-    </div>
-    <button id="downloadBtn" onclick="downloadHTML()">
-      Download the updated HTML
-    </button>
+      </div>
+      <button
+        id="downloadExcelBtn"
+        onclick="downloadExcel()"
+      >
+        Download Folder Structure with details
+      </button>
+      <button id="downloadBtn" onclick="downloadHTML()">
+        Download the updated HTML
+      </button>
   
 
 </body></html>
