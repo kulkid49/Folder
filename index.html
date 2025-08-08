@@ -4325,6 +4325,7 @@
               }
 
               function downloadExcel() {
+                initializeMetaForAllFolders();
                 const headers = [
                   "Folder Name",
                   "Folder Path",
@@ -4334,17 +4335,35 @@
                   "Filename Sample",
                 ];
                 const rows = [headers];
-                Object.keys(folderMeta).forEach((key) => {
-                  const m = folderMeta[key];
-                  rows.push([
-                    m.Name || "",
-                    m.Path || "",
-                    m["Comments"] || "",
-                    m["Read Access"] || "",
-                    m["Write Access"] || "",
-                    m["Filename Sample"] || "",
-                  ]);
-                });
+
+                function traverse(ul) {
+                  ul.querySelectorAll(":scope > li").forEach((li) => {
+                    const path = getFullPath(li);
+                    const key = path.toLowerCase();
+                    const m =
+                      folderMeta[key] || {
+                        Name: path.split(" > ").pop(),
+                        Path: path,
+                        Comments: "",
+                        "Read Access": "",
+                        "Write Access": "",
+                        "Filename Sample": "",
+                      };
+                    rows.push([
+                      m.Name || "",
+                      m.Path || "",
+                      m["Comments"] || "",
+                      m["Read Access"] || "",
+                      m["Write Access"] || "",
+                      m["Filename Sample"] || "",
+                    ]);
+                    const nested = li.querySelector(":scope > ul");
+                    if (nested) traverse(nested);
+                  });
+                }
+
+                traverse(document.getElementById("folderTree"));
+
                 const worksheet = XLSX.utils.aoa_to_sheet(rows);
                 const workbook = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(
