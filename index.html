@@ -4423,6 +4423,11 @@
                 document
                   .querySelectorAll("#folderTree li")
                   .forEach((el) => attachLiEvent(el));
+                // Reset any open folder details so stale information is not shown
+                document.getElementById("infoBox").style.display = "none";
+                document.getElementById("infoDisplay").style.display = "block";
+                document.getElementById("editForm").style.display = "none";
+                currentEditPath = null;
                 collapseAll();
               }
 
@@ -4479,6 +4484,8 @@
               }
 
               function downloadHTML() {
+                // Ensure folderMeta reflects the current tree before exporting
+                initializeMetaForAllFolders();
                 const meta = JSON.stringify(folderMeta, null, 2);
                 let html = document.documentElement.outerHTML;
                 html = html.replace(
