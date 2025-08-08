@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="utf-8">
     <title>EY Document Folder Tree</title>
@@ -417,4 +418,91 @@
         </div>
       </div>
 
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div></body></html>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('#folderTree .caret').forEach(caret => {
+          caret.classList.add('folder-closed');
+          caret.addEventListener('click', () => {
+            const nested = caret.parentElement.querySelector('.nested');
+            if (nested) {
+              nested.classList.toggle('active');
+              caret.classList.toggle('caret-down');
+              caret.classList.toggle('folder-open');
+              caret.classList.toggle('folder-closed');
+            }
+          });
+        });
+      });
+
+      function expandAll() {
+        document.querySelectorAll('#folderTree .nested').forEach(n => n.classList.add('active'));
+        document.querySelectorAll('#folderTree .caret').forEach(c => {
+          c.classList.add('caret-down', 'folder-open');
+          c.classList.remove('folder-closed');
+        });
+      }
+
+      function collapseAll() {
+        document.querySelectorAll('#folderTree .nested').forEach(n => n.classList.remove('active'));
+        document.querySelectorAll('#folderTree .caret').forEach(c => {
+          c.classList.remove('caret-down', 'folder-open');
+          c.classList.add('folder-closed');
+        });
+      }
+
+      function searchFolder() {
+        const query = document.getElementById('searchBox').value.toLowerCase();
+        const result = document.getElementById('searchResult');
+        if (!query) {
+          clearSearch();
+          return;
+        }
+        let matches = 0;
+        document.querySelectorAll('#folderTree li').forEach(li => {
+          const text = li.firstChild.textContent.trim().toLowerCase();
+          if (text.includes(query)) {
+            li.style.fontWeight = 'bold';
+            let parent = li.parentElement;
+            while (parent && parent.id !== 'folderTree') {
+              if (parent.classList.contains('nested')) {
+                parent.classList.add('active');
+                const prev = parent.previousElementSibling;
+                if (prev && prev.classList.contains('caret')) {
+                  prev.classList.add('caret-down', 'folder-open');
+                  prev.classList.remove('folder-closed');
+                }
+              }
+              parent = parent.parentElement;
+            }
+            matches++;
+          } else {
+            li.style.fontWeight = 'normal';
+          }
+        });
+        result.textContent = matches ? `Found ${matches} match${matches>1?'es':''}.` : 'No matches found.';
+      }
+
+      function clearSearch() {
+        document.getElementById('searchBox').value = '';
+        document.getElementById('searchResult').textContent = '';
+        document.querySelectorAll('#folderTree li').forEach(li => li.style.fontWeight = 'normal');
+      }
+
+      function downloadHTML() {
+        const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'index.html';
+        a.click();
+      }
+
+      function closeOverlay() {
+        document.getElementById('uploadOverlay').style.display = 'none';
+      }
+
+      function downloadExcel() { console.warn('downloadExcel not implemented'); }
+      function handleExcelUpload() { console.warn('handleExcelUpload not implemented'); }
+      function saveFolderDetails() { console.warn('saveFolderDetails not implemented'); }
+    </script>
+  </body>
+</html>
