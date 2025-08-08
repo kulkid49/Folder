@@ -4326,9 +4326,11 @@
 
               function downloadExcel() {
                 initializeMetaForAllFolders();
+                // Header titles must match the columns expected by handleExcelUpload
+                // so that a downloaded template can be uploaded without modification.
                 const headers = [
-                  "Folder Name",
-                  "Folder Path",
+                  "Name",
+                  "Path",
                   "Comments",
                   "Read Access",
                   "Write Access",
