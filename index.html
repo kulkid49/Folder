@@ -246,7 +246,7 @@
       #downloadExcelBtn {
         position: fixed;
         bottom: 20px;
-        right: 200px;
+        right: 235px;
         background-color: #3498db;
         color: #fff;
         border: none;
@@ -271,8 +271,17 @@
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  </head>
-  <body>
+  <style id="monica-reading-highlight-style">
+        .monica-reading-highlight {
+          animation: fadeInOut 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+          0%, 100% { background-color: transparent; }
+          30%, 70% { background-color: rgba(2, 118, 255, 0.20); }
+        }
+      </style></head>
+  <body data-new-gr-c-s-check-loaded="14.1247.0" data-gr-ext-installed="" monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="7.9.7">
     <div class="header">
       <h2>📁 EY DOC Folder Tree</h2>
       <div id="levelLegend">
@@ -301,8 +310,8 @@
       <div class="tree-section">
         <ul id="folderTree">
           <li class="level-1">
-            <span class="caret caret-down folder-open">Project Governance</span>
-            <ul class="nested active">
+            <span class="caret folder-closed">Project Governance</span>
+            <ul class="nested">
               <li class="level-2">
                 <span class="caret folder-closed">01 Project Plan</span>
                 <ul class="nested">
@@ -313,29 +322,29 @@
                 </ul>
               </li>
               <li class="level-2">
-                <span class="caret caret-down folder-open">02 PMO Corner</span>
-                <ul class="nested active">
+                <span class="caret folder-closed">02 PMO Corner</span>
+                <ul class="nested">
                   <li class="level-3">📁MOM</li>
                   <li class="level-3">📁Risk Register</li>
                 </ul>
               </li>
               <li class="level-2">
-                <span class="caret caret-down folder-open">03 Steering Committee</span>
-                <ul class="nested active">
+                <span class="caret folder-closed">03 Steering Committee</span>
+                <ul class="nested">
                   <li class="level-3">📁SteerCo Decks</li>
                 </ul>
               </li>
               <li class="level-2">
-                <span class="caret caret-down folder-open">04 Travel Planning</span>
-                <ul class="nested active">
+                <span class="caret folder-closed">04 Travel Planning</span>
+                <ul class="nested">
                   <li class="level-3">📁Travel Planner Phase 1</li>
                 </ul>
               </li>
             </ul>
           </li>
           <li class="level-1">
-            <span class="caret caret-down folder-open">Global Template</span>
-            <ul class="nested active">
+            <span class="caret folder-closed">Global Template</span>
+            <ul class="nested">
               <li class="level-2">📁Inputs from IRC</li>
               <li class="level-2">
                 <span class="caret folder-closed">Deliverables for Sign Off</span>
@@ -362,8 +371,8 @@
                 </ul>
               </li>
               <li class="level-2">
-                <span class="caret caret-down folder-open">Working Documents GT</span>
-                <ul class="nested active">
+                <span class="caret folder-closed">Working Documents GT</span>
+                <ul class="nested">
                   <li class="level-3">📁01 BPML</li>
                   <li class="level-3">📁02 Org. Structure</li>
                   <li class="level-3">📁03 RTM</li>
@@ -376,11 +385,11 @@
             </ul>
           </li>
           <li class="level-1">
-            <span class="caret caret-down folder-open">Roll Out Phase 1</span>
-            <ul class="nested active">
+            <span class="caret folder-closed">Roll Out Phase 1</span>
+            <ul class="nested">
               <li class="level-2">
-                <span class="caret caret-down folder-open">Local Fit GAP</span>
-                <ul class="nested active">
+                <span class="caret folder-closed">Local Fit GAP</span>
+                <ul class="nested">
                   <li class="level-3">
                     <span class="caret folder-closed">Working Documents</span>
                     <ul class="nested">
@@ -411,14 +420,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Textile</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Textile</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKT</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKT</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -432,11 +441,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Indonesia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Indonesia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IRS</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IRS</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -452,14 +461,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Fertilizer</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Fertilizer</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKF</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKF</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -471,8 +480,8 @@
                                     </ul>
                                   </li>
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">FAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">FAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -486,11 +495,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Georgia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Georgia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">RAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">RAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -508,8 +517,8 @@
                         </ul>
                       </li>
                       <li class="level-4">
-                        <span class="caret caret-down folder-open">Local Fit-Gap MOMs</span>
-                        <ul class="nested active">
+                        <span class="caret folder-closed">Local Fit-Gap MOMs</span>
+                        <ul class="nested">
                           <li class="level-5">📁Indonesia</li>
                           <li class="level-5">📁Uzbekistan</li>
                           <li class="level-5">📁Georgia</li>
@@ -522,17 +531,17 @@
                       <li class="level-4">📁Local formats</li>
                       <li class="level-4">📁LOCAL KDS</li>
                       <li class="level-4">
-                        <span class="caret caret-down folder-open">Local RTM</span>
-                        <ul class="nested active">
+                        <span class="caret folder-closed">Local RTM</span>
+                        <ul class="nested">
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Agro</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Agro</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IAL</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IAL</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -548,14 +557,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Textile</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Textile</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKT</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKT</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -569,11 +578,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Indonesia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Indonesia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IRS</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IRS</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -589,14 +598,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Fertilizer</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Fertilizer</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKF</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKF</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -608,8 +617,8 @@
                                     </ul>
                                   </li>
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">FAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">FAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -623,11 +632,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Georgia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Georgia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">RAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">RAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -651,8 +660,8 @@
                     </ul>
                   </li>
                   <li class="level-3">
-                    <span class="caret caret-down folder-open">Deliverables for Sign Off</span>
-                    <ul class="nested active">
+                    <span class="caret folder-closed">Deliverables for Sign Off</span>
+                    <ul class="nested">
                       <li class="level-4">
                         <span class="caret folder-closed">Local BPFDs</span>
                         <ul class="nested">
@@ -680,14 +689,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Textile</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Textile</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKT</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKT</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -701,11 +710,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Indonesia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Indonesia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IRS</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IRS</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -721,14 +730,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Fertilizer</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Fertilizer</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKF</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKF</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -740,8 +749,8 @@
                                     </ul>
                                   </li>
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">FAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">FAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -755,11 +764,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Georgia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Georgia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">RAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">RAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -804,14 +813,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Textile</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Textile</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKT</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKT</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -825,11 +834,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Indonesia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Indonesia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IRS</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IRS</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -845,14 +854,14 @@
                             </ul>
                           </li>
                           <li class="level-5">
-                            <span class="caret caret-down folder-open">Fertilizer</span>
-                            <ul class="nested active">
+                            <span class="caret folder-closed">Fertilizer</span>
+                            <ul class="nested">
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Uzbekistan</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Uzbekistan</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">IKF</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">IKF</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -864,8 +873,8 @@
                                     </ul>
                                   </li>
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">FAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">FAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -879,11 +888,11 @@
                                 </ul>
                               </li>
                               <li class="level-6">
-                                <span class="caret caret-down folder-open">Georgia</span>
-                                <ul class="nested active">
+                                <span class="caret folder-closed">Georgia</span>
+                                <ul class="nested">
                                   <li class="level-7">
-                                    <span class="caret caret-down folder-open">RAI</span>
-                                    <ul class="nested active">
+                                    <span class="caret folder-closed">RAI</span>
+                                    <ul class="nested">
                                       <li class="level-8">📁OTC</li>
                                       <li class="level-8">📁SCM</li>
                                       <li class="level-8">📁RTR</li>
@@ -913,12 +922,12 @@
                     </ul>
                   </li>
                   <li class="level-3">
-                    <span class="caret caret-down folder-open">Signed Off Documents</span>
-                    <ul class="nested active">
+                    <span class="caret folder-closed">Signed Off Documents</span>
+                    <ul class="nested">
                       <li class="level-4">📁Tracker</li>
                       <li class="level-4">
-                        <span class="caret caret-down folder-open">Sign off Reference</span>
-                        <ul class="nested active">
+                        <span class="caret folder-closed">Sign off Reference</span>
+                        <ul class="nested">
                           <li class="level-5">📁GE Sign Off Emails<span class="folder-actions"><button onclick="renameFolder(event)">✏️</button><button onclick="addSubfolder(event)">➕</button><button onclick="deleteFolder(event)">🗑️</button><button onclick="editFolderDetails(event)">📝</button></span></li>
                           <li class="level-5">📁ID Sign Off Emails</li>
                           <li class="level-5">📁UZ Sign Off Emails</li>
@@ -927,31 +936,31 @@
                     </ul>
                   </li>
                   <li class="level-3">
-                    <span class="caret caret-down folder-open">Realize &amp; Build</span>
-                    <ul class="nested active">
+                    <span class="caret folder-closed">Realize &amp; Build</span>
+                    <ul class="nested">
                       <li class="level-4">📁Configuration checklist</li>
                       <li class="level-4">📁WRICEF Developments</li>
                     </ul>
                   </li>
                   <li class="level-3">
-                    <span class="caret caret-down folder-open">Realize &amp; Test</span>
-                    <ul class="nested active">
+                    <span class="caret folder-closed">Realize &amp; Test</span>
+                    <ul class="nested">
                       <li class="level-4">📁UT</li>
                       <li class="level-4">📁SIT</li>
                       <li class="level-4">📁UAT</li>
                     </ul>
                   </li>
                   <li class="level-3">
-                    <span class="caret caret-down folder-open">Governance</span>
-                    <ul class="nested active">
+                    <span class="caret folder-closed">Governance</span>
+                    <ul class="nested">
                       <li class="level-4">📁TR Movement Tracker</li>
                       <li class="level-4">📁SAP Server Readiness</li>
                     </ul>
                   </li>
                   <li class="level-3">📁Master Data</li>
                   <li class="level-3">
-                    <span class="caret caret-down folder-open">Cut Over</span>
-                    <ul class="nested active">
+                    <span class="caret folder-closed">Cut Over</span>
+                    <ul class="nested">
                       <li class="level-4">📁Cutover Plan</li>
                       <li class="level-4">📁Cutover Strategy</li>
                       <li class="level-4">📁Cutover Templates</li>
@@ -4155,10 +4164,7 @@
         </form>
       </div>
       </div>
-      <button
-        id="downloadExcelBtn"
-        onclick="downloadExcel()"
-      >
+      <button id="downloadExcelBtn" onclick="downloadExcel()">
         Download Folder Structure with details
       </button>
       <button id="downloadBtn" onclick="downloadHTML()">
@@ -4166,4 +4172,4 @@
       </button>
   
 
-</body></html>
+<div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
