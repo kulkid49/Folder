@@ -271,6 +271,54 @@
       .clear-btn {
         background-color: #e74c3c;
       }
+      #uploadOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      #uploadOverlay .overlay-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 300px;
+      }
+      #uploadProgressContainer {
+        width: 100%;
+        background: #eee;
+        border-radius: 4px;
+        overflow: hidden;
+        height: 20px;
+        margin-bottom: 10px;
+      }
+      #uploadProgressBar {
+        height: 100%;
+        width: 0%;
+        background: #3498db;
+        transition: width 0.2s;
+      }
+      #uploadResults {
+        text-align: left;
+        max-height: 150px;
+        overflow-y: auto;
+        margin: 10px 0;
+        padding-left: 20px;
+      }
+      #closeOverlayBtn {
+        padding: 6px 12px;
+        background-color: #27ae60;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+      }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <style id="monica-reading-highlight-style">
@@ -4240,31 +4288,89 @@
                 document.getElementById("editForm").style.display = "none";
               }
 
+              function showUploadOverlay() {
+                document.getElementById("uploadOverlay").style.display = "flex";
+                document.getElementById("uploadProgressBar").style.width = "0%";
+                document.getElementById("uploadStatus").textContent = "Uploading...";
+                document.getElementById("uploadResults").innerHTML = "";
+                document.getElementById("closeOverlayBtn").style.display = "none";
+              }
+
+              function updateProgress(percent) {
+                document.getElementById("uploadProgressBar").style.width =
+                  percent + "%";
+              }
+
+              function finishUpload(success, updated, failed) {
+                updateProgress(100);
+                const status = document.getElementById("uploadStatus");
+                status.textContent = success
+                  ? "Upload successful"
+                  : "Upload failed";
+                const results = document.getElementById("uploadResults");
+                results.innerHTML = "";
+                if (updated.length) {
+                  const li = document.createElement("li");
+                  li.textContent = "Updated: " + updated.join(", ");
+                  results.appendChild(li);
+                }
+                if (failed.length) {
+                  const li = document.createElement("li");
+                  li.textContent = "Failed: " + failed.join(", ");
+                  results.appendChild(li);
+                }
+                document.getElementById("closeOverlayBtn").style.display =
+                  "inline-block";
+              }
+
+              function closeOverlay() {
+                document.getElementById("uploadOverlay").style.display = "none";
+              }
+
               function handleExcelUpload(e) {
                 const file = e.target.files[0];
                 if (!file) return;
+                showUploadOverlay();
+                updateProgress(10);
                 const reader = new FileReader();
                 reader.onload = function (ev) {
-                  const data = new Uint8Array(ev.target.result);
-                  const workbook = XLSX.read(data, { type: "array" });
-                  const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                  const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-                  Object.keys(folderMeta).forEach((k) => delete folderMeta[k]);
-                  for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i];
-                    const name = row[0] || "";
-                    const path = row[1] || "";
-                    if (!path) continue;
-                    folderMeta[path.toLowerCase()] = {
-                      Name: name,
-                      Path: path,
-                      Comments: row[2] || "",
-                      "Read Access": row[3] || "",
-                      "Write Access": row[4] || "",
-                      "Filename Sample": row[5] || "",
-                    };
+                  try {
+                    updateProgress(50);
+                    const data = new Uint8Array(ev.target.result);
+                    const workbook = XLSX.read(data, { type: "array" });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                    Object.keys(folderMeta).forEach((k) => delete folderMeta[k]);
+                    const updated = [];
+                    const failed = [];
+                    for (let i = 1; i < rows.length; i++) {
+                      const row = rows[i];
+                      const name = row[0] || "";
+                      const path = row[1] || "";
+                      if (!path) {
+                        failed.push(name || "Row " + (i + 1));
+                        continue;
+                      }
+                      folderMeta[path.toLowerCase()] = {
+                        Name: name,
+                        Path: path,
+                        Comments: row[2] || "",
+                        "Read Access": row[3] || "",
+                        "Write Access": row[4] || "",
+                        "Filename Sample": row[5] || "",
+                      };
+                      updated.push(path);
+                    }
+                    renderTreeFromMeta();
+                    updateProgress(90);
+                    finishUpload(true, updated, failed);
+                  } catch (err) {
+                    console.error(err);
+                    finishUpload(false, [], []);
                   }
-                  renderTreeFromMeta();
+                };
+                reader.onerror = function () {
+                  finishUpload(false, [], []);
                 };
                 reader.readAsArrayBuffer(file);
                 e.target.value = "";
@@ -4458,6 +4564,15 @@
           Download the updated HTML
         </button>
       </div>
-  
+      <div id="uploadOverlay" style="display:none">
+        <div class="overlay-content">
+          <div id="uploadProgressContainer">
+            <div id="uploadProgressBar"></div>
+          </div>
+          <div id="uploadStatus"></div>
+          <ul id="uploadResults"></ul>
+          <button id="closeOverlayBtn" onclick="closeOverlay()">Close</button>
+        </div>
+      </div>
 
 <div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body></html>
