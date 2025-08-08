@@ -228,47 +228,39 @@
       }
 
       /* download button styling */
-      #downloadBtn {
+      #buttonContainer {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background-color: #27ae60;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      #buttonContainer button {
         color: #fff;
         border: none;
         padding: 10px 15px;
         border-radius: 4px;
         cursor: pointer;
-      }
-
-      #downloadBtn:hover {
-        opacity: 0.9;
       }
       #uploadExcelBtn {
-        position: fixed;
-        bottom: 20px;
-        right: 450px;
         background-color: #e74c3c;
-        color: #fff;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 4px;
-        cursor: pointer;
       }
       #uploadExcelBtn:hover {
         opacity: 0.9;
       }
       #downloadExcelBtn {
-        position: fixed;
-        bottom: 20px;
-        right: 235px;
         background-color: #3498db;
-        color: #fff;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 4px;
-        cursor: pointer;
       }
       #downloadExcelBtn:hover {
+        opacity: 0.9;
+      }
+      #downloadBtn {
+        background-color: #27ae60;
+        align-self: flex-end;
+      }
+      #downloadBtn:hover {
         opacity: 0.9;
       }
       .action-button:hover {
@@ -4426,18 +4418,20 @@
         style="display:none"
         onchange="handleExcelUpload(event)"
       />
-      <button
-        id="uploadExcelBtn"
-        onclick="document.getElementById('uploadExcelInput').click()"
-      >
-        Upload Folder Str. with details
-      </button>
-      <button id="downloadExcelBtn" onclick="downloadExcel()">
-        Download Folder Str. with details
-      </button>
-      <button id="downloadBtn" onclick="downloadHTML()">
-        Download the updated HTML
-      </button>
+      <div id="buttonContainer">
+        <button
+          id="uploadExcelBtn"
+          onclick="document.getElementById('uploadExcelInput').click()"
+        >
+          Upload Folder Str. with details
+        </button>
+        <button id="downloadExcelBtn" onclick="downloadExcel()">
+          Download Folder Str. with details
+        </button>
+        <button id="downloadBtn" onclick="downloadHTML()">
+          Download the updated HTML
+        </button>
+      </div>
   
 
 <div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body></html>
