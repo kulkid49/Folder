@@ -238,12 +238,8 @@
         align-items: stretch;
       }
       #buttonContainer button {
-        color: #fff;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 4px;
-        cursor: pointer;
         width: 100%;
+        margin-right: 0;
       }
       #uploadExcelBtn {
         background-color: #e74c3c;
@@ -4442,14 +4438,23 @@
       <div id="buttonContainer">
         <button
           id="uploadExcelBtn"
+          class="action-button"
           onclick="document.getElementById('uploadExcelInput').click()"
         >
           Upload Folder Str. with details
         </button>
-        <button id="downloadExcelBtn" onclick="downloadExcel()">
+        <button
+          id="downloadExcelBtn"
+          class="action-button"
+          onclick="downloadExcel()"
+        >
           Download Folder Str. with details
         </button>
-        <button id="downloadBtn" onclick="downloadHTML()">
+        <button
+          id="downloadBtn"
+          class="action-button"
+          onclick="downloadHTML()"
+        >
           Download the updated HTML
         </button>
       </div>
