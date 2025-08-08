@@ -243,6 +243,20 @@
       #downloadBtn:hover {
         opacity: 0.9;
       }
+      #uploadExcelBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 450px;
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #uploadExcelBtn:hover {
+        opacity: 0.9;
+      }
       #downloadExcelBtn {
         position: fixed;
         bottom: 20px;
@@ -4235,7 +4249,87 @@
                 document.getElementById("infoFilename").textContent =
                   filename || "None";
                 document.getElementById("infoDisplay").style.display = "block";
-              document.getElementById("editForm").style.display = "none";
+                document.getElementById("editForm").style.display = "none";
+              }
+
+              function handleExcelUpload(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                  const data = new Uint8Array(ev.target.result);
+                  const workbook = XLSX.read(data, { type: "array" });
+                  const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                  const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                  Object.keys(folderMeta).forEach((k) => delete folderMeta[k]);
+                  for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    const name = row[0] || "";
+                    const path = row[1] || "";
+                    if (!path) continue;
+                    folderMeta[path.toLowerCase()] = {
+                      Name: name,
+                      Path: path,
+                      Comments: row[2] || "",
+                      "Read Access": row[3] || "",
+                      "Write Access": row[4] || "",
+                      "Filename Sample": row[5] || "",
+                    };
+                  }
+                  renderTreeFromMeta();
+                };
+                reader.readAsArrayBuffer(file);
+                e.target.value = "";
+              }
+
+              function renderTreeFromMeta() {
+                const structure = {};
+                Object.values(folderMeta).forEach((m) => {
+                  const parts = (m.Path || "").split(" > ");
+                  let current = structure;
+                  parts.forEach((part) => {
+                    if (!current[part]) current[part] = {};
+                    current = current[part];
+                  });
+                });
+                const root = document.getElementById("folderTree");
+                root.innerHTML = "";
+                function build(node, parent, level) {
+                  Object.keys(node).forEach((name) => {
+                    const li = document.createElement("li");
+                    li.classList.add("level-" + Math.min(level, 8));
+                    const children = node[name];
+                    if (Object.keys(children).length) {
+                      const span = document.createElement("span");
+                      span.className = "caret folder-closed";
+                      span.textContent = name;
+                      span.addEventListener("click", function (ev) {
+                        ev.stopPropagation();
+                        const nested = this.parentElement.querySelector(".nested");
+                        if (nested) {
+                          nested.classList.toggle("active");
+                          this.classList.toggle("caret-down");
+                          this.classList.toggle("folder-open");
+                          this.classList.toggle("folder-closed");
+                        }
+                      });
+                      li.appendChild(span);
+                      const ul = document.createElement("ul");
+                      ul.className = "nested";
+                      build(children, ul, level + 1);
+                      li.appendChild(ul);
+                    } else {
+                      li.textContent = "📁" + name;
+                    }
+                    parent.appendChild(li);
+                  });
+                }
+                build(structure, root, 1);
+                initializeMetaForAllFolders();
+                document
+                  .querySelectorAll("#folderTree li")
+                  .forEach((el) => attachLiEvent(el));
+                collapseAll();
               }
 
               function downloadExcel() {
@@ -4325,6 +4419,19 @@
         </form>
       </div>
       </div>
+      <input
+        type="file"
+        id="uploadExcelInput"
+        accept=".xlsx"
+        style="display:none"
+        onchange="handleExcelUpload(event)"
+      />
+      <button
+        id="uploadExcelBtn"
+        onclick="document.getElementById('uploadExcelInput').click()"
+      >
+        Upload Folder Str. with details
+      </button>
       <button id="downloadExcelBtn" onclick="downloadExcel()">
         Download Folder Str. with details
       </button>
