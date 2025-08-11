@@ -1016,25 +1016,12 @@
               
             <li class="level-2">📁Data Management</li><li class="level-2">📁Pre Go Live</li><li class="level-2">📁Go Live</li><li class="level-2">📁PGLS</li></ul>
             <script>
-              function initializeTogglers() {
-                const togglers = document.getElementsByClassName("caret");
-                for (let i = 0; i < togglers.length; i++) {
-                  togglers[i].classList.add("folder-closed");
-                  togglers[i].addEventListener("click", function () {
-                    const nestedList = this.parentElement.querySelector(
-                      ".nested"
-                    );
-                    if (nestedList) {
-                      nestedList.classList.toggle("active");
-                      this.classList.toggle("caret-down");
-                      this.classList.toggle("folder-open");
-                      this.classList.toggle("folder-closed");
-                    }
-                  });
-                }
-              }
-
-              document.addEventListener("DOMContentLoaded", initializeTogglers);
+              // Rebuild the folder tree from `folderMeta` whenever the page loads.
+              // This ensures that a downloaded HTML file still wires up all
+              // event listeners and interactive behaviour.
+              document.addEventListener("DOMContentLoaded", function () {
+                renderTreeFromMeta();
+              });
 
               function expandAll() {
                 document
@@ -4492,7 +4479,7 @@
                 // Ensure folderMeta reflects the current tree before exporting
                 initializeMetaForAllFolders();
                 const meta = JSON.stringify(folderMeta, null, 2);
-                let html = document.documentElement.outerHTML;
+                let html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
                 html = html.replace(
                   /const folderMeta = {[^]*?};/,
                   "const folderMeta = " + meta + ";"
@@ -4505,9 +4492,6 @@
                 a.click();
                 URL.revokeObjectURL(url);
               }
-
-              // Collapse folders by default when the page loads
-              collapseAll();
             </script>
           </li>
         </ul>
