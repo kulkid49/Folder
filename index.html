@@ -4480,10 +4480,17 @@
                 initializeMetaForAllFolders();
                 const meta = JSON.stringify(folderMeta, null, 2);
                 let html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-                html = html.replace(
-                  /const folderMeta = {[^]*?};/,
-                  "const folderMeta = " + meta + ";"
-                );
+                const marker = "const folderMeta = ";
+                const start = html.lastIndexOf(marker);
+                if (start !== -1) {
+                  const end = html.indexOf("};", start) + 2;
+                  html =
+                    html.slice(0, start) +
+                    marker +
+                    meta +
+                    ";" +
+                    html.slice(end);
+                }
                 const blob = new Blob([html], { type: "text/html" });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement("a");
