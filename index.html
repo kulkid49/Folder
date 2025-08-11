@@ -4481,7 +4481,7 @@
                 const meta = JSON.stringify(folderMeta, null, 2);
                 let html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
                 const marker = "const folderMeta = ";
-                const start = html.lastIndexOf(marker);
+                const start = html.indexOf(marker);
                 if (start !== -1) {
                   const end = html.indexOf("};", start) + 2;
                   html =
@@ -4495,7 +4495,13 @@
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement("a");
                 a.href = url;
-                a.download = "updated.html";
+                const now = new Date();
+                const timestamp = now
+                  .toISOString()
+                  .replace("T", " ")
+                  .replace(/:/g, "-")
+                  .slice(0, 19);
+                a.download = `EY DOC folder tree updated(${timestamp}).html`;
                 a.click();
                 URL.revokeObjectURL(url);
               }
